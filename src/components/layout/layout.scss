@@ -1,0 +1,20 @@
+.layout {
+    background: #001528;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 30px;
+    gap: 20px;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    .user-details{
+        color: whitesmoke;
+        font-size: 14px;
+    }
+    .logout-icon {
+        color: var(--danger-color);
+        font-size: larger;
+        cursor: pointer;
+    }
+}

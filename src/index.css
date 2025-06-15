@@ -1,0 +1,14 @@
+@import '../node_modules/@flaticon/flaticon-uicons/css/all/all.css';
+
+:root {
+  --primary-color: #1990ff;
+  --danger-color : #ff4d4f
+}
+
+body {
+  margin: 0;
+  background: #d1fae5;
+  min-height: 100vh;
+  background: #dedede;
+}
+

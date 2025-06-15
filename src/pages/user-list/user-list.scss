@@ -1,0 +1,245 @@
+.user-list-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .user-list-container {
+        border-radius: 0px;
+        padding: 40px 25px;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+        justify-content: center;
+
+        @media (max-width : 800px){
+            width: 95%;
+        }
+
+        @media (max-width : 375px){
+            padding: 0px;
+        }
+    
+        .ant-radio-button-wrapper{
+            cursor: pointer !important;
+        }
+
+        .view-page-pagination{
+            margin-top: 10px;
+        }
+
+        .ant-table{
+            border-radius: 0px;
+        }
+
+        .profile-img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50px;
+        }
+
+        table{
+            background: white;
+        }
+
+        .title-bar {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            padding: 0px 20px;
+
+            & > div:first-child{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                @media (max-width : 375px){
+                    flex-direction: column;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .ant-input-outlined,
+            .ant-btn {
+                border-radius: 4px;
+            }
+
+            .create-user-btn {
+                background: var(--primary-color);
+                color: white;
+            }
+        }
+
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .ant-radio-button-wrapper {
+            border-radius: 2px !important;
+
+            .ant-radio-button-label {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+            }
+
+            i {
+                margin-right: 2px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .email {
+            color: var(--primary-color);
+        }
+
+        .action-btns {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .edit-btn {
+            background: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+
+            &:hover {
+                background: white;
+                border: 1px solid var(--primary-color);
+                color: var(--primary-color);
+            }
+
+        }
+
+        .delete-btn {
+            background: var(--danger-color);
+            color: white;
+            border-radius: 4px;
+
+            &:hover {
+                background: white;
+                border: 1px solid var(--danger-color);
+                color: var(--danger-color);
+            }
+        }
+
+        .card-view-container {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: start;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            .card-view {
+                width: 20%;
+                border: 1px solid #dedede;
+                background: white;
+                border-radius: 2px;
+                padding: 15px 20px;
+                box-shadow: 2px black;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                height: 160px;
+                transition: all ease-in-out .3s;
+
+                .ant-skeleton-avatar{
+                   height: 80px;
+                   width: 80px; 
+                }
+
+                .node-skeleton{
+                    margin-top: 5px;
+                    height: 40px;
+                    width: 200px;
+                }
+
+                .user-profile {
+                    width: 40%;
+                    overflow: hidden;
+                    border-radius: 100px;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 100px;
+                        object-fit: contain;
+                    }
+                }
+
+                .user-details {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                    gap: 4px;
+                    & > p{
+                        margin: 0px;
+                    }
+                    & > p:nth-child(1){
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
+                    & > p:nth-child(2){
+                        font-weight: lighter;
+                        font-size: 14px;
+                        color: gray;
+                    }
+                }
+
+                &:hover{
+                    cursor: pointer;
+                    .user-actions {
+                        display: flex;
+                    }
+                }
+
+                .user-actions {
+                    display: none;
+                    width: 20%;
+                    background: #ffffff10;
+                    backdrop-filter: blur(5px);
+                    gap: 4px;
+                    width: 100%;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    .edit-btn{
+                        background: #8586e6;
+                        &:hover{
+                            color: #8586e6;
+                            background: white;
+                            border: 1px solid #8586e6;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    .user-list-view-page{
+        @media (max-width : 800px){
+            overflow: scroll;
+        }
+    }
+
+    .rounded{
+        border-radius: 100px !important;
+        font-size: 16px !important;
+        width: 45px !important;
+        height: 45px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}
