@@ -7,8 +7,27 @@
 
 body {
   margin: 0;
-  background: #d1fae5;
+  /* background: #d1fae5; */
   min-height: 100vh;
-  background: #dedede;
+  background: #eeeef0;
   font-family: "Poppins", sans-serif;
+}
+
+
+.not-found{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.not-found > h2{
+  margin: 0px;
+  font-size: 62px;
+}
+.not-found > p{
+  margin: 0px;
+  font-style: italic;
 }

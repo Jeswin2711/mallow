@@ -6,7 +6,7 @@ const Layout = () => {
   const navigate = useNavigate()
 
   function handleLogout(){
-    localStorage.removeItem('token')
+    document.cookie = "token=; max-age=0; path=/;";
     navigate('/login')
   }
 
