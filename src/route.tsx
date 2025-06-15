@@ -4,7 +4,6 @@ import Login from '@/pages/login/Login'
 
 export default [
   {
-    path: "/",
     element: <Layout />,
     children: [
       {

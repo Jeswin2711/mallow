@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./login.scss";
 import { Button, Checkbox, Input } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -11,11 +11,23 @@ const Login = () => {
   document.title = 'Login'
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
-  const {notifySuccess, notifyError} = useNotification()
+  const {notifySuccess, notifyError, notifyInfo} = useNotification()
   const [formData, setFormData] = useState({
     email : "",
     password : ""
   })
+
+
+  useEffect(() => {
+    let isMounted = true
+    if(isMounted && localStorage.getItem('token')){
+      navigate('/users-list')
+    }
+    return () => {
+      isMounted = false
+    }
+  }, [])
+  
 
   async function handleUserLogin(){
     setLoading(true)
@@ -32,9 +44,14 @@ const Login = () => {
     }
   }
 
-  function handleForm(e: { target: { name: string; value: string; }; }){
-    setFormData({...formData, [e.target.name] : e.target.value})
+  function handleForm(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === 'email' ? value.toLowerCase() : value.trimStart(),
+    }));
   }
+  
 
   return (
     <section className="login-page">
@@ -43,12 +60,14 @@ const Login = () => {
           placeholder="Email"
           prefix={<i className="flex items-center fi fi-rs-user"></i>}
           name="email"
+          value={formData.email}
           onChange={handleForm}
         />
         <Input.Password
           placeholder="Password"
           prefix={<i className="flex items-center fi fi-rr-lock"></i>}
           name="password"
+          value={formData.password}
           onChange={handleForm}
         />
         <Checkbox>Remember Me</Checkbox>

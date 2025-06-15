@@ -149,6 +149,8 @@
                 position: relative;
                 height: 160px;
                 transition: all ease-in-out .3s;
+                border-radius: 4px;
+                box-shadow: 1px 1px #ccc;
 
                 .ant-skeleton-avatar{
                    height: 80px;
@@ -186,11 +188,11 @@
                     }
                     & > p:nth-child(1){
                         font-size: 16px;
-                        font-weight: bold;
+                        font-weight: 400;
                     }
                     & > p:nth-child(2){
-                        font-weight: lighter;
                         font-size: 14px;
+                        font-weight: 500;
                         color: gray;
                     }
                 }
@@ -228,6 +230,9 @@
     }
 
     .user-list-view-page{
+        .ant-table-thead > tr > th {
+            width: 20%;
+        }
         @media (max-width : 800px){
             overflow: scroll;
         }

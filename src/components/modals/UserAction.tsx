@@ -58,7 +58,7 @@ const UserAction = ({
       }));
       setDataPayload((prev) => ({
         ...prev,
-        [key]: cleaned,
+        [key]: key == 'email' ? cleaned.toLowerCase() : cleaned,
       }));
     },
   }));

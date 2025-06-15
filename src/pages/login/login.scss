@@ -19,6 +19,10 @@
             width: 50vw;
         }
 
+        @media (max-width : 375px){
+            width: 90%;
+        }
+
         .ant-input-outlined,
         .ant-btn {
             border-radius: 4px !important;

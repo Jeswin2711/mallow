@@ -8,6 +8,7 @@ import userApis from "@/apis/userApis";
 import useNotification from "@/hooks/useNotification";
 import type { AppDispatch, RootState } from "@/redux/store";
 import { deleteUser, getUsers, updatePage } from "@/redux/slice/userSlice";
+import { wordFormatter } from "@/utils/helpers";
 
 const UserListView = ({ view, search }: { view: string, search:string }) => {
   document.title = 'Users List'
@@ -97,10 +98,10 @@ const UserListView = ({ view, search }: { view: string, search:string }) => {
         <Table
           dataSource={filteredData?.map((user : UserDataType) => ({
             id : user?.id,
-            first_name: user?.first_name,
-            last_name: user?.last_name,
-            email: user?.email,
-            avatar: user?.avatar,
+            first_name: wordFormatter(user?.first_name),
+            last_name: wordFormatter(user?.last_name),
+            email: user?.email?.toLowerCase(),
+            avatar: user?.avatar ?? 'https://avatars.githubusercontent.com/u/9113740?v=4',
           }))}
           columns={columns}
           pagination={false}
