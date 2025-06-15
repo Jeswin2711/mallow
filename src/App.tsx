@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Toaster/>
-      <RouterProvider router={createBrowserRouter(route)} />
+      <RouterProvider router={createBrowserRouter(route)}/>
     </>
   );
 }

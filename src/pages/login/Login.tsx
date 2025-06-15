@@ -3,7 +3,7 @@ import "./login.scss";
 import { Button, Checkbox, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import type { AxiosError } from "axios";
-import { wordFormatter } from "@/utils/helpers";
+import { getToken, wordFormatter } from "@/utils/helpers";
 import useNotification from "@/hooks/useNotification";
 import userApis from "@/apis/userApis";
 
@@ -20,7 +20,7 @@ const Login = () => {
 
   useEffect(() => {
     let isMounted = true
-    if(isMounted && localStorage.getItem('token')){
+    if(isMounted && getToken()){
       navigate('/users-list')
     }
     return () => {
@@ -33,7 +33,7 @@ const Login = () => {
     setLoading(true)
     try {
       const response = await userApis.loginUser('/login', formData)
-      localStorage.setItem('token',response.data.token)
+      document.cookie = `token=${response.data.token}; path=/; max-age=3600`;
       navigate('/users-list')
       notifySuccess('Login Successful')
     } catch (error) {

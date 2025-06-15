@@ -9,3 +9,10 @@ export function wordFormatter(input: string, convertUpperCase = true, separator 
 
   return words.join(" ");
 }
+
+export function getToken() {
+  return document.cookie
+    .split("; ")
+    .find(row => row.startsWith("token="))
+    ?.split("=")[1];
+}

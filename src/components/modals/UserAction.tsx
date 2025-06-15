@@ -9,10 +9,11 @@ import userApis from "@/apis/userApis";
 import { addUser, updateUser } from "@/redux/slice/userSlice";
 import useNotification from "@/hooks/useNotification";
 import { wordFormatter } from "@/utils/helpers";
+import { nameRegex } from "@/utils/constants";
 
 const UserSchema = z.object({
-  first_name: z.string().min(2).max(14),
-  last_name: z.string().min(2).max(14),
+  first_name: z.string().min(2).max(14).regex(nameRegex, 'First name should contain only letters'),
+  last_name: z.string().min(2).max(14).regex(nameRegex ,'Last name should contain only letters'),
   email: z.string().email(),
   avatar: z.string().includes('https'),
 })

@@ -1,3 +1,4 @@
+import { getToken } from "@/utils/helpers";
 import { useEffect, type JSX } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +7,7 @@ function withAuthProtection(WrappedComponent : () => JSX.Element) {
     const navigate = useNavigate();
 
     useEffect(() => {
-      let token = localStorage.getItem("token");
+      let token = getToken();
       if (!token) {
         navigate("/login");
         return;

@@ -1,54 +1,97 @@
-# React + TypeScript + Vite
+# User Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple user management interface with login and full CRUD operations, built using [ReqRes API](https://reqres.in/).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tech Stack
 
-## Expanding the ESLint configuration
+- ⚛️ React  
+- ⚙️ Redux Toolkit  
+- 🎨 Ant Design (antd)  
+- 📬 Sonner (toast notifications)  
+- 🧠 TypeScript  
+- 🎨 SCSS (modular styles)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## ✨ Features
+
+- 🔐 User Authentication (via fake API)
+- 🧑‍💼 Create, Read, Update, Delete (CRUD) users
+- ⚡ API integration using ReqRes
+- 🎛️ Clean UI with Ant Design components
+- 🛎️ Toast Notifications with Sonner
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd <project-directory>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+### 3. Run in development mode
+
+```bash
+npm run dev
+```
+
+### 4. Build for production
+
+```bash
+npm run build
+```
+
+---
+
+## 🔐 Login Credentials
+
+Use the following credentials to log in:
+
+```json
+{
+  "email": "eve.holt@reqres.in",
+  "password": "cityslicka"
+}
+```
+
+> ✅ These are official test credentials provided by ReqRes.
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+├── apis/               # Reusable api calls 
+├── components/         # Reusable UI components
+├── pages/
+│   ├── login/          # Login page
+│   └── user-list/      # User list and CRUD operations
+├── redux/              # Redux Toolkit slices and store
+├── route.tsx           # Route configuration
+├── utils/              # Utlities
+└── main.tsx            # Entry point
+```
+
+---
+
+## ⚠️ API Reference
+
+This project uses the public [ReqRes API](https://reqres.in/) for simulating backend CRUD operations.
+
+---
+
+## 📝 License
+
+This project was created as part of a task and is not intended for commercial use.
