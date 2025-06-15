@@ -128,7 +128,7 @@ const UserListView = ({ view, search }: { view: string, search:string }) => {
                     </div>
                     <div className="user-details">
                       <p>
-                        {user?.first_name} {user?.last_name}
+                        {wordFormatter(user?.first_name)} {wordFormatter(user?.last_name)}
                       </p>
                       <p>{user?.email}</p>
                     </div>
