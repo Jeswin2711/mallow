@@ -17,17 +17,11 @@ const Login = () => {
     password : ""
   })
 
-
-  useEffect(() => {
-    let isMounted = true
-    if(isMounted && getToken()){
+  useEffect(() => {    
+    if(getToken()){
       navigate('/users-list')
-    }
-    return () => {
-      isMounted = false
-    }
+    } 
   }, [])
-  
 
   async function handleUserLogin(){
     setLoading(true)

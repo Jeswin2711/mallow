@@ -4,13 +4,23 @@ import { Button, Input, Radio } from "antd";
 import UserAction from "@/components/modals/UserAction";
 import withAuthProtection from "@/hoc/withAuthenticate";
 import UserListView from "./views/UserListView";
+import type { UserDataType } from "@/types/types";
 
 document.title = 'Users List'
+let a = 5;
+var b = 6;
 
 const UserList = () => {
   const [view, setView] = useState("table");
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("")
+  const [selectedUserData, setSelectedUserData] = useState<UserDataType>({
+    first_name: "",
+    last_name: "",
+    email: "",
+    avatar: "",
+  });
+  
 
   function handleViewChange(view: string): void {
     setView(view);
@@ -60,19 +70,13 @@ const UserList = () => {
             </Radio.Button>
           </Radio.Group>
         </div>
-        <UserListView view={view} search={searchTerm}/>
+        <UserListView view={view} search={searchTerm} setSelectedUserData={setSelectedUserData} setShowModal={setShowModal}/>
       </div>
-      {showModal && (
-        <UserAction
-          userData={{
-            first_name: "",
-            last_name: "",
-            email: "",
-            avatar: "",
-          }}
-          setShowModal={setShowModal}
-        />
-      )}
+      <UserAction
+        showModal={showModal}
+        userData={selectedUserData}
+        setShowModal={setShowModal}
+      />
     </section>
   );
 };

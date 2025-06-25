@@ -3,6 +3,7 @@ import { useEffect, type JSX } from "react";
 import { useNavigate } from "react-router-dom";
 
 function withAuthProtection(WrappedComponent : () => JSX.Element) {
+
   const ProtectedComponent = () => {
     const navigate = useNavigate();
 

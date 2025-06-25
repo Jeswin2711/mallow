@@ -11,5 +11,5 @@ export type ModalInput = {
   type: string;
   required: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  maxLength : number
+  maxLength : number | undefined
 };

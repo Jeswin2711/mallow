@@ -1,5 +1,5 @@
 import { Form, Input, Modal } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./modal.scss";
 import { z } from "zod";
 import { ZodError } from "zod/v4";
@@ -15,10 +15,11 @@ const UserSchema = z.object({
   first_name: z.string().min(2).max(14).regex(nameRegex, 'First name should contain only letters'),
   last_name: z.string().min(2).max(14).regex(nameRegex ,'Last name should contain only letters'),
   email: z.string().email(),
-  avatar: z.string().regex(urlRegex, 'Please enter valid url'),
+  avatar: z.string().regex(urlRegex, 'Please enter valid url')
 })
 
 const UserAction = ({
+  showModal,
   userData = {
     id: '',
     first_name: '',
@@ -28,9 +29,11 @@ const UserAction = ({
   },
   setShowModal = () => { },
 }: {
+  showModal : boolean,
   userData: UserDataType | null
   setShowModal: (arg: boolean) => void;
 }) => {
+  
   const {notifySuccess, notifyError} = useNotification()
   const [dataPayload, setDataPayload] = useState<UserDataType>(userData as UserDataType);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string | undefined>>({
@@ -44,11 +47,17 @@ const UserAction = ({
   const dispatch = useDispatch()
   const keys: Array<keyof UserDataType> = ["first_name", "last_name", "email", "avatar"];
 
+  useEffect(() => {
+    if (userData) {
+      setDataPayload(userData);
+    }
+  }, [userData]);
+
   let modalInputs: ModalInput[] = keys.map((key) => ({
     key,
     type: "text",
     required: true,
-    maxLength: key === 'first_name' || key === 'last_name' ? 16 : 224,
+    maxLength: ['email', 'avatar'].includes(key) ? 224 : undefined,
     onChange: ({ target: { value } }) => {
       let cleaned = value.trimStart().replace(/\s{2,}/g, " ");
       const fieldSchema = UserSchema.shape[key as keyof typeof UserSchema.shape];
@@ -89,7 +98,7 @@ const UserAction = ({
   return (
     <Modal
       title=<p>{`${!!userData?.first_name ? "Edit User" : "Create New User"}`}</p>
-      open={true}
+      open={showModal}
       onOk={submitModal}
       onCancel={() => setShowModal(false)}
       className="user-actions-modal"
